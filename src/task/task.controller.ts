@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Patch, Post, Put, Req } from '@nestjs/common';
+import { Controller, Delete, Get, Param, Patch, Post, Put, Req } from '@nestjs/common';
 import { Request } from 'express';
 
 @Controller('api/v1/task')
@@ -27,5 +27,23 @@ export class TaskController {
     deleteMethod(@Req() req: Request){
         return `method ${req.method}`;
     }
-    
+
+    @Post(':id')
+    testParamMethod1(@Param('id') id: string){
+        return {id};
+    }
+
+    // @Post(':id/description/:description/isdone/:isdone')
+    // testParamMethod2(@Param() param: any){
+    //     return { param };
+    // }
+
+    @Post(':id/description/:description/isdone/:isdone')
+    testParamMethod3(
+      @Param('id') id: number,
+      @Param('description') description: string,
+      @Param('isdone') isdone: boolean)
+    {
+        return { id, description, isdone };
+    }
 }
