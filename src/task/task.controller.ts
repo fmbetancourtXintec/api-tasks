@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Param, Patch, Post, Put, Query, Req } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Put, Query, Req } from '@nestjs/common';
 import { Request } from 'express';
 
 @Controller('api/v1/task')
@@ -56,12 +56,24 @@ export class TaskController {
     //     return { id, description, isdone };
     // }
 
+    // @Post()
+    // queryMethod2(
+    //   @Query() query: any
+    // )
+    // {
+    //     return { query };
+    // }
+
+    // @Post()
+    // bodyMethod1(@Body() body: any)
+    // {
+    //     return body;
+    // }
+
     @Post()
-    queryMethod2(
-      @Query() query: any
-    )
+    bodyMethod2(@Body('description') description: any)
     {
-        return { query };
+        return { description };
     }
 
 }
