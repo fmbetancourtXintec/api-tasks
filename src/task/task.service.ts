@@ -9,7 +9,7 @@ export class TaskService {
 
   tasks: ITask[] = [];
   // Retorna una interfaz de tareas
-  create(taskDTO:TaskDTO): ITask {
+  createTask(taskDTO:TaskDTO): ITask {
 
     const task = {
       id: uuidv4(),
