@@ -91,4 +91,9 @@ export class TaskController {
         return this.taskService.createTask(taskDTO);
     }
 
+    @Get()
+    findAll(){
+        return this.taskService.findAll();
+    }
+
 }
