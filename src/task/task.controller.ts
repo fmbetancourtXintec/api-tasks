@@ -1,5 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Put, Query, Req } from '@nestjs/common';
 import { Request } from 'express';
+import { TaskDTO } from './dto/task.dto';
+import { TaskService } from './task.service';
 
 @Controller('api/v1/task')
 export class TaskController {
@@ -70,10 +72,17 @@ export class TaskController {
     //     return body;
     // }
 
+    // @Post()
+    // bodyMethod2(@Body('description') description: any)
+    // {
+    //     return { description };
+    // }
+
+    constructor(private readonly taskService:TaskService) {}
     @Post()
-    bodyMethod2(@Body('description') description: any)
+    create(@Body() taskDTO: TaskDTO)
     {
-        return { description };
+        return this.taskService.create(taskDTO);
     }
 
 }
