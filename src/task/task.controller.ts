@@ -111,5 +111,10 @@ export class TaskController {
         return this.taskService.update(id, taskDTO);
     }
 
+    @Delete(':id')
+    delete(@Param('id') id: string){
+        return this.taskService.delete(id);
+    }
+
 
 }
