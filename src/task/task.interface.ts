@@ -1,4 +1,5 @@
 export interface ITask{
-    description:string;
-    isDone:boolean;
+    id?: string; // El ? significa que es opcional
+    description: string;
+    isDone: boolean;
 }

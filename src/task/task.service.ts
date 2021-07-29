@@ -24,4 +24,8 @@ export class TaskService {
   findAll(): ITask[]{
     return this.tasks;
   }
+
+  findOne(id: string): ITask{
+    return this.tasks.find(t => t.id === id);
+  }
 }
