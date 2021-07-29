@@ -5,6 +5,9 @@ import { TaskService } from './task.service';
 
 @Controller('api/v1/task')
 export class TaskController {
+
+    //Test Endpoints Decorations
+
     @Post('post')
     postMethod(@Req() req: Request){
         return `method ${req.method}`;
@@ -84,11 +87,13 @@ export class TaskController {
         return { description };
     }
 
+    // Tasks CRUD
+
     constructor(private readonly taskService:TaskService) {}
     @Post()
-    createTask(@Body() taskDTO: TaskDTO)
+    create(@Body() taskDTO: TaskDTO)
     {
-        return this.taskService.createTask(taskDTO);
+        return this.taskService.create(taskDTO);
     }
 
     @Get()
@@ -100,5 +105,11 @@ export class TaskController {
     findOne(@Param('id') id: string){
         return this.taskService.findOne(id);
     }
+
+    @Put(':id')
+    update(@Param('id') id: string, @Body() taskDTO: TaskDTO){
+        return this.taskService.update(id, taskDTO);
+    }
+
 
 }
