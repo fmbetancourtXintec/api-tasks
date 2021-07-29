@@ -1,8 +1,9 @@
 import {
+    BadRequestException,
     Body,
     Controller,
     Delete,
-    Get,
+    Get, HttpException, HttpStatus,
     Param,
     Patch,
     Post,
@@ -107,7 +108,20 @@ export class TaskController {
     //@UsePipes(new ValidationPipe())
     create(@Body() taskDTO: TaskDTO)
     {
-        return this.taskService.create(taskDTO);
+        /********** SIMULACIÓN DE ERRORES **********/
+
+        // throw new BadRequestException('Error en petición');
+
+        // throw new HttpException('Error en petición', HttpStatus.BAD_REQUEST);
+
+
+        return new Promise((resolve, reject) => {
+            setTimeout(() => reject('Error en petición'), 2000);
+        });
+
+        /*******************************************/
+
+        // return this.taskService.create(taskDTO);
     }
 
     @Get()
