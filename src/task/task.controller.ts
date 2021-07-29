@@ -115,8 +115,16 @@ export class TaskController {
         // throw new HttpException('Error en petición', HttpStatus.BAD_REQUEST);
 
 
+        // return new Promise((resolve, reject) => {
+        //     setTimeout(() => reject('Error en petición'), 2000);
+        // });
+
+        /*******************************************/
+
+        /******* SIMULACIÓN DE INTERCEPTORES *******/
+
         return new Promise((resolve, reject) => {
-            setTimeout(() => reject('Error en petición'), 2000);
+            setTimeout(() => reject('Something was wrong!'), 15000);
         });
 
         /*******************************************/
